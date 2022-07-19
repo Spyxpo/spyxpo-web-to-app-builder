@@ -98,6 +98,16 @@ def saveData():
     else:
         os.mkdir("projects")
 
+    if os.path.exists(f"build/{app_name_info}_{app_version_info}.apk"):
+        os.remove(f"build/{app_name_info}_{app_version_info}.apk")
+    else:
+        pass
+
+    if os.path.exists(f"build/{app_name_info}_{app_version_info}.aab"):
+        os.remove(f"build/{app_name_info}_{app_version_info}.aab")
+    else:
+        pass
+
     if app_name_info == "":
         showinfo("No app name", "No app name, please enter an app name.")
         return False
