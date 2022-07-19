@@ -84,7 +84,6 @@ python update.py
 
 All issues that are known to us are listed here, we are working on fixing them.
 - "key.properties" file is not generated properly so app is not signed completely.
-- Migrate plugin 'flutter_webview_plugin' to [V2 embedding ](https://flutter.dev/go/android-plugin-migration).
 - "build.py" only build executable for Windows OS.
 
 
