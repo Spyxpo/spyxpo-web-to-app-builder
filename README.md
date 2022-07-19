@@ -7,6 +7,8 @@
 
 This is a preview build for testing purposes major update coming soon.
 
+[Documentation](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki)
+
 ## Supported OS
 
 - Windows
@@ -109,7 +111,6 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - Pull to refresh
 - Notifications
 - App update popup
-- Dockerizing this project soon
 
 ## Authors
 
