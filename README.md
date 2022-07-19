@@ -108,7 +108,6 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 ## Coming soon
 
 - Convert website into ipa/app/exe/appimage
-- External url opener
 - Pull to refresh
 - Notifications
 - App update popup
