@@ -50,6 +50,16 @@ if os.path.exists("assets/key.properties"):
 else:
     pass
 
+def openBuildfolder():
+    if running_on == 'Darwin':
+        os.system('open build')
+    elif running_on == 'Linux':
+        os.system('open build')
+    elif running_on == 'Windows':
+        os.system('start build')
+    else:
+        pass
+
 def uploadIconAction(event=None):
     app_name_info = app_name.get()
 
@@ -438,6 +448,9 @@ blank_label.pack()
 
 building_apk_aab = Label(root, text="Building \'.apk\' and '.aab',\n\'appBundle\' is Play Store ready.", fg="green")
 building_apk_aab.pack()
+
+open_button = Button(root, text='Open Build Folder', command=lambda: openBuildfolder())
+open_button.pack()
 
 build_button = Button(root, text='Build', command=lambda: saveData())
 build_button.pack()
