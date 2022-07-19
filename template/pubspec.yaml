@@ -12,11 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_webview_plugin: ^0.4.0
+  flutter_webview_pro: ^3.0.1+2
+  url_launcher: ^6.1.5
   flutter_app_version_checker: ^0.3.1
   open_store: ^0.2.4
   internet_connection_checker: ^0.0.1+4
-  url_launcher: ^6.1.5
+  flutter_bounceable: ^1.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-package com.example.template
+package com.spyxpo.template
 
 import io.flutter.embedding.android.FlutterActivity
 
