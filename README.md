@@ -104,6 +104,7 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - Javascript enabled
 - Play Store ready app
 - Custom keystore for aab signing
+- External url opener
 
 ## Coming soon
 

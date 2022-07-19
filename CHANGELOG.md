@@ -6,3 +6,4 @@
 - Javascript enabled
 - Play Store ready app
 - Custom keystore for aab signing
+- External url opener
