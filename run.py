@@ -50,6 +50,16 @@ if os.path.exists("assets/key.properties"):
 else:
     pass
 
+def openBuildfolder():
+    if running_on == 'Darwin':
+        os.system('open build')
+    elif running_on == 'Linux':
+        os.system('open build')
+    elif running_on == 'Windows':
+        os.system('start build')
+    else:
+        pass
+
 def uploadIconAction(event=None):
     app_name_info = app_name.get()
 
@@ -287,6 +297,8 @@ def saveData():
         f"Your apk is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.apk\"\n")
     print(
         f"Your appBundle is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.aab\"\n")
+    
+    openBuildfolder()
 
 def building_apk_aab_show():
    building_apk_aab.pack()
@@ -302,7 +314,7 @@ root = tk.Tk()
 icon = PhotoImage(file = 'images/logo.png')
 root.iconphoto(False, icon)
 root.title('Spyxpo Web To App Builder | ' + version)
-root.geometry('500x730')
+root.geometry('500x750')
 root.resizable(0, 0)
 
 app_name_label = Label(root, text="App Name")
@@ -438,6 +450,9 @@ blank_label.pack()
 
 building_apk_aab = Label(root, text="Building \'.apk\' and '.aab',\n\'appBundle\' is Play Store ready.", fg="green")
 building_apk_aab.pack()
+
+open_button = Button(root, text='Open Build Folder', command=lambda: openBuildfolder())
+open_button.pack()
 
 build_button = Button(root, text='Build', command=lambda: saveData())
 build_button.pack()
