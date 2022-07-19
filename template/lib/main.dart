@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           url: 'https://WEBSITE',
           withZoom: false,
           withLocalStorage: true,
+          geolocationEnabled: true,
           withJavascript: true,
           appCacheEnabled: true,
           allowFileURLs: true,

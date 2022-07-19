@@ -7,6 +7,8 @@
 
 This is a preview build for testing purposes major update coming soon.
 
+[Documentation](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki)
+
 ## Supported OS
 
 - Windows
@@ -19,6 +21,7 @@ This is a preview build for testing purposes major update coming soon.
 - [Installation](#installation)
 - [Update](#update)
 - [Release](#release)
+- [Known Issues](#known-issues)
 
 ## Screenshots
 
@@ -75,6 +78,14 @@ python update.py
 ```
 <a id= "release">
 
+<a id= "known-issues"></a>
+## Known Issues
+
+All issues that are known to us are listed here, we are working on fixing them.
+- "key.properties" file is not generated properly so app is not signed completely.
+- Migrate plugin 'flutter_webview_plugin' to [V2 embedding ](https://flutter.dev/go/android-plugin-migration).
+
+
 ## Release
 
 #### Create a Keystore (For signing app and uploading on Play Store)
@@ -100,7 +111,6 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - Pull to refresh
 - Notifications
 - App update popup
-- Dockerizing this project soon
 
 ## Authors
 
