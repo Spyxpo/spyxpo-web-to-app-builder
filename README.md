@@ -7,7 +7,8 @@
 
 This is a preview build for testing purposes major update coming soon.
 
-[Documentation](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki)
+- [Documentation](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki)
+- [Download](https://github.com/Spyxpo/spyxpo-web-to-app-builder/releases/latest)
 
 ## Supported OS
 
