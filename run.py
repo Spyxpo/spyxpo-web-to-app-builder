@@ -312,7 +312,7 @@ root = tk.Tk()
 icon = PhotoImage(file = 'images/logo.png')
 root.iconphoto(False, icon)
 root.title('Spyxpo Web To App Builder | ' + version)
-root.geometry('500x730')
+root.geometry('500x750')
 root.resizable(0, 0)
 
 app_name_label = Label(root, text="App Name")
