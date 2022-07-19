@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.template">
+    package="com.spyxpo.template">
    <application
-        android:label="template"
+        android:label="APP_NAME"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

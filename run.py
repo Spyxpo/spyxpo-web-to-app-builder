@@ -72,7 +72,11 @@ def uploadIconAction(event=None):
     app_name_info = app_name.get()
     icon = filedialog.askopenfilename(filetypes=[("png files", "*.png")])
     print('Icon image:', icon)
-    shutil.copy(str(icon), 'assets/favicon.png')
+    
+    if icon == '':
+        pass
+    else:
+        shutil.copy(str(icon), 'assets/favicon.png')
 
 def uploadKeystoreAction(event=None):
     app_name_info = app_name.get()
