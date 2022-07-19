@@ -297,6 +297,8 @@ def saveData():
         f"Your apk is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.apk\"\n")
     print(
         f"Your appBundle is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.aab\"\n")
+    
+    openBuildfolder()
 
 def building_apk_aab_show():
    building_apk_aab.pack()
