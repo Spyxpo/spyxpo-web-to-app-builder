@@ -1,5 +1,6 @@
 // don't change the source code, this is a very important file
 
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_pro/webview_flutter.dart';
@@ -36,42 +37,66 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    if (Platform.isIOS) WebView.platform = CupertinoWebView();
   }
 
   @override
   Widget build(BuildContext context) {
+    WebViewController? _controller;
+    final Completer<WebViewController> _controllerCompleter =
+        Completer<WebViewController>();
+    willPopScope() async {
+      Future<bool>? goBack = _controller?.canGoBack();
+      // ignore: unrelated_type_equality_checks
+      if (goBack == true) {
+        return true;
+      } else {
+        _controller!.goBack();
+        return false;
+      }
+    }
+
     String url = 'https://www.spyxpo.com';
     return SafeArea(
-      child: Scaffold(
-        body: Builder(builder: (BuildContext context) {
-          return WebView(
-            initialUrl: url,
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebResourceError: (WebResourceError error) {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const ErrorPage()),
-                (Route<dynamic> route) => false,
+      child: WillPopScope(
+        onWillPop: () => willPopScope(),
+        child: Scaffold(
+          body: Builder(
+            builder: (BuildContext context) {
+              return WebView(
+                initialUrl: url,
+                javascriptMode: JavascriptMode.unrestricted,
+                onWebResourceError: (WebResourceError error) {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ErrorPage()),
+                    (Route<dynamic> route) => false,
+                  );
+                },
+                onProgress: (int progress) {
+                  const Center(child: CircularProgressIndicator());
+                },
+                onWebViewCreated: (WebViewController webViewController) {
+                  _controllerCompleter.future
+                      .then((value) => _controller = value);
+                  _controllerCompleter.complete(webViewController);
+                },
+                navigationDelegate: (NavigationRequest request) {
+                  if (request.url.startsWith(url)) {
+                    return NavigationDecision.navigate;
+                  } else {
+                    launchURL(request.url);
+                    return NavigationDecision.prevent;
+                  }
+                },
+                zoomEnabled: false,
+                gestureNavigationEnabled: true,
+                geolocationEnabled: true,
               );
             },
-            onProgress: (int progress) {
-              const CircularProgressIndicator();
-            },
-            navigationDelegate: (NavigationRequest request) {
-              if (request.url.startsWith(url)) {
-                return NavigationDecision.navigate;
-              } else {
-                return NavigationDecision.prevent;
-              }
-            },
-            zoomEnabled: false,
-            onPageStarted: (String url) {},
-            onPageFinished: (String url) {},
-            gestureNavigationEnabled: true,
-            geolocationEnabled: true,
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
