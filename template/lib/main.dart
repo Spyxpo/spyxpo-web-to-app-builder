@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     }
 
-    String url = 'https://www.spyxpo.com';
+    String url = 'https://WEBSITE';
     return SafeArea(
       child: WillPopScope(
         onWillPop: () => willPopScope(),
