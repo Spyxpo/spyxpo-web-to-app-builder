@@ -11,6 +11,7 @@ from tkinter import filedialog
 import shutil
 import os
 import platform
+from turtle import st
 
 running_on = platform.system()
 
@@ -72,7 +73,11 @@ def uploadIconAction(event=None):
     app_name_info = app_name.get()
     icon = filedialog.askopenfilename(filetypes=[("png files", "*.png")])
     print('Icon image:', icon)
-    shutil.copy(str(icon), 'assets/favicon.png')
+    
+    if icon == '':
+        pass
+    else:
+        shutil.copy(str(icon), 'assets/favicon.png')
 
 def uploadKeystoreAction(event=None):
     app_name_info = app_name.get()
@@ -102,6 +107,9 @@ def saveData():
     app_version_info = app_version.get()
     app_build_info = app_build_number.get()
     app_web_url = web_url.get().lower()
+    key_alias_info = alias.get()
+    key_pass_info = key_pass.get()
+    store_pass_info = store_pass.get()
 
     if os.path.exists("projects"):
         pass
@@ -133,8 +141,14 @@ def saveData():
     if os.path.exists("assets/favicon.png"):
         pass
     else:
-        showinfo("No icon", "No icon, please select an icon for your app.")
+        showinfo("No icon selected", "No icon selected, please select an icon for your app.")
         return False
+    
+    if os.path.exists("assets/key.properties"):
+        pass
+    else:
+        showinfo("No keystore selected", "No keystore selected, please select a keystore for your app.")
+        return False    
 
     if app_description_info == "":
         showinfo("No description", "No description, please enter a description.")
@@ -156,7 +170,19 @@ def saveData():
     elif os.path.exists(f"projects/{app_name_info}"):
         showinfo("App already exists",
                  "App already exists, please try another name for your app.")
+        return False 
+    elif key_alias_info == "":
+        showinfo("Keystore Alias",
+                 "Keystore alias is required.")
         return False
+    elif key_pass_info == "":
+        showinfo("Keystore Key Password",
+                 "Keystore key password is required.")
+        return False
+    elif store_pass_info == "":
+        showinfo("Keystore Password",
+                 "Keystore password is required.")
+        return False       
     else:
         shutil.copytree("template", f"projects/{app_name_info}")
         
@@ -314,7 +340,7 @@ root = tk.Tk()
 icon = PhotoImage(file = 'images/logo.png')
 root.iconphoto(False, icon)
 root.title('Spyxpo Web To App Builder | ' + version)
-root.geometry('500x750')
+root.geometry('500x755')
 root.resizable(0, 0)
 
 app_name_label = Label(root, text="App Name")
