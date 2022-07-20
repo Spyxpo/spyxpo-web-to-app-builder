@@ -11,7 +11,6 @@ from tkinter import filedialog
 import shutil
 import os
 import platform
-from turtle import st
 
 running_on = platform.system()
 
@@ -323,13 +322,8 @@ def saveData():
         f"Your apk is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.apk\"\n")
     print(
         f"Your appBundle is located in \"/build/{app_name_info}/{app_name_info}_{app_version_info}.aab\"\n")
-    
-    openBuildfolder()
 
-def building_apk_aab_show():
-   building_apk_aab.pack()
-def building_apk_aab_hide():
-   building_apk_aab.pack_forget()
+    openBuildfolder()
 
 # version details
 version_info = open('version.info', 'r')
