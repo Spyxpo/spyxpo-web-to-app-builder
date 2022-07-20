@@ -11,7 +11,6 @@ from tkinter import filedialog
 import shutil
 import os
 import platform
-from turtle import st
 
 running_on = platform.system()
 
