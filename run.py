@@ -79,7 +79,7 @@ def uploadIconAction(event=None):
     else:
         shutil.copy(str(icon), 'assets/favicon.png')
 
-def uploadKeystoreAction(event=None):
+def uploadKeystoreAction():
     app_name_info = app_name.get()
 
     if app_name_info == "":
@@ -96,7 +96,7 @@ def uploadKeystoreAction(event=None):
     print('Keystore file:', keystore_path)
 
     key_file = open('assets/key.properties', 'w')
-    key_file.write(f'storePassword={store_pass_info}\nkeyPassword={key_pass_info}\nkeyAlias={alias_info}\nstoreFile={keystore_path}')
+    key_file.write(f'storeFile={keystore_path}\n')
     key_file.close()
 
 def saveData():
@@ -185,7 +185,10 @@ def saveData():
         return False       
     else:
         shutil.copytree("template", f"projects/{app_name_info}")
-        
+    
+    key_file = open('assets/key.properties', 'a+')
+    key_file.write(f'storePassword={store_pass_info}\nkeyPassword={key_pass_info}\nkeyAlias={key_alias_info}\n')
+    key_file.close()
 
     shutil.copy('assets/favicon.png',
                     f'projects/{app_name_info}/assets/images/favicon.png')    
@@ -340,9 +343,9 @@ root.resizable(0, 0)
 
 menubar = Menu(root)
 root.config(menu=menubar)
-file_menu = Menu(menubar, tearoff=False)
-run_menu = Menu(menubar, tearoff=False)
-help_menu = Menu(menubar, tearoff=False)
+file_menu = Menu(menubar)
+run_menu = Menu(menubar)
+help_menu = Menu(menubar)
 
 # file menu item
 menubar.add_cascade(
