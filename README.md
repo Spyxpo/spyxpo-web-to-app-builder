@@ -84,7 +84,6 @@ python update.py
 ## Known Issues
 
 All issues that are known to us are listed here, we are working on fixing them.
-- "key.properties" file is not generated properly so app is not signed completely.
 - "build.py" only build executable for Windows OS.
 
 
