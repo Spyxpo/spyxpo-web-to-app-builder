@@ -34,14 +34,15 @@ This is a preview build for testing purposes major update coming soon.
 
 ## Requirements
 
-Add flutter SDK, Android Studio, Xcode, Python3 and JRE in PATH(if required).
+Add Flutter, Python, Android Studio, JDK and JRE in environment variables/.bashrc/.zshrc.
 
-- [Flutter >=2.12.0 <3.0.0](https://flutter.dev/docs/get-started/install)
-- [Python 3.8 or above](https://www.python.org)
-- [Android Studio](https://developer.android.com/studio?gclid=CjwKCAiA1aiMBhAUEiwACw25MR3VaqSxOs-Xh0t0pI8ZyjjpdArTBE45Yqvdo5BAMC4ETrX0AHcqoBoCodAQAvD_BwE&gclsrc=aw.ds)
+- [Git](https://git-scm.com/downloads/)
+- [Flutter](https://flutter.dev/docs/get-started/install/)
+- [Python 3.8 or above](https://www.python.org/downloads/)
+- [Android Studio](https://developer.android.com/studio)
 - [Xcode (only for macOS)](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-- [Java JRE (for Keystore)](https://www.java.com/en/download/)
-- [Git](https://git-scm.com/downloads)
+- [JDK](https://www.oracle.com/java/technologies/downloads/)
+- [JRE](https://www.java.com/en/download/)
 
 <a id= "installation"></a>
 ## Installation
@@ -83,7 +84,9 @@ python update.py
 ## Known Issues
 
 All issues that are known to us are listed here, we are working on fixing them.
+- "key.properties" file is not generated properly so app is not signed completely.
 - "build.py" only build executable for Windows OS.
+
 
 ## Release
 
