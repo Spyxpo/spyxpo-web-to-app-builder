@@ -343,9 +343,9 @@ root.resizable(0, 0)
 
 menubar = Menu(root)
 root.config(menu=menubar)
-file_menu = Menu(menubar)
-run_menu = Menu(menubar)
-help_menu = Menu(menubar)
+file_menu = Menu(menubar,tearoff=False)
+run_menu = Menu(menubar, tearoff=False)
+help_menu = Menu(menubar, tearoff=False)
 
 # file menu item
 menubar.add_cascade(
