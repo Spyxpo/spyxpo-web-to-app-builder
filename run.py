@@ -11,6 +11,7 @@ from tkinter import filedialog
 import shutil
 import os
 import platform
+import webbrowser
 
 running_on = platform.system()
 
@@ -334,8 +335,66 @@ root = tk.Tk()
 icon = PhotoImage(file = 'images/logo.png')
 root.iconphoto(False, icon)
 root.title('Spyxpo Web To App Builder | ' + version)
-root.geometry('500x755')
+root.geometry('500x730')
 root.resizable(0, 0)
+
+menubar = Menu(root)
+root.config(menu=menubar)
+file_menu = Menu(menubar, tearoff=False)
+run_menu = Menu(menubar, tearoff=False)
+help_menu = Menu(menubar, tearoff=False)
+
+# file menu item
+menubar.add_cascade(
+    label="File",
+    menu=file_menu,
+    underline=0
+)
+
+file_menu.add_command(
+    label='Open Build Folder',
+    command=lambda: openBuildfolder(),
+)
+
+file_menu.add_separator()
+
+file_menu.add_command(
+    label='Exit',
+    command=root.destroy,
+)
+
+# run menu item
+menubar.add_cascade(
+    label="Run",
+    menu=run_menu
+)
+run_menu.add_command(
+    label='Build',
+    command=lambda: saveData(),
+)
+
+# help menu item
+menubar.add_cascade(
+    label="About",
+    menu=help_menu
+)
+help_menu.add_command(
+    label='Visit Website',
+    command=lambda: webbrowser.open('https://www.spyxpo.com'),
+)
+help_menu.add_separator()
+help_menu.add_command(
+    label='Changelog',
+    command=lambda: webbrowser.open('https://github.com/Spyxpo/spyxpo-web-to-app-builder/blob/master/CHANGELOG.md'),
+)
+help_menu.add_command(
+    label='Source Code',
+    command=lambda: webbrowser.open('https://github.com/Spyxpo/spyxpo-web-to-app-builder/'),
+)
+help_menu.add_command(
+    label='View License',
+    command=lambda: webbrowser.open('https://github.com/Spyxpo/spyxpo-web-to-app-builder/blob/master/LICENSE'),
+)
 
 app_name_label = Label(root, text="App Name")
 app_name_label.pack()
@@ -470,9 +529,6 @@ blank_label.pack()
 
 building_apk_aab = Label(root, text="Building \'.apk\' and '.aab',\n\'appBundle\' is Play Store ready.", fg="green")
 building_apk_aab.pack()
-
-open_button = Button(root, text='Open Build Folder', command=lambda: openBuildfolder())
-open_button.pack()
 
 build_button = Button(root, text='Build', command=lambda: saveData())
 build_button.pack()
