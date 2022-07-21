@@ -19,6 +19,7 @@ This is a preview build for testing purposes major update coming soon.
 ## Steps
 
 - [Requirements](#requirements)
+- [Setup](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki/setup)
 - [Installation](#installation)
 - [Update](#update)
 - [Release](#release)
