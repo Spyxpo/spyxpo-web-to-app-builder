@@ -1,3 +1,5 @@
+# this works on Windows for now, macOS & Linux support coming soon
+
 import os
 import shutil
 import platform
