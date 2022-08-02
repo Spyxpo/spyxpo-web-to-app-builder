@@ -9,6 +9,8 @@ This is a preview build for testing purposes major update coming soon.
 
 - [Documentation](https://github.com/Spyxpo/spyxpo-web-to-app-builder/wiki)
 - [Downloads](https://github.com/Spyxpo/spyxpo-web-to-app-builder/releases/latest)
+- [Features](#features)
+- [Coming Soon](#coming-soon)
 
 ## Supported OS
 
@@ -85,7 +87,7 @@ python update.py
 ## Known Issues
 
 All issues that are known to us are listed here, we are working on fixing them.
-- "build.py" only build executable for Windows OS.
+- "build.py" only builds executable for Windows OS.
 
 
 ## Release
@@ -99,20 +101,23 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 
 ## Features
 
-- Website to apk
-- Website to aab
-- App works without internet
-- Javascript enabled
-- Play Store ready app
-- Custom keystore for aab signing
-- External url opener
+- [X] Website to apk
+- [X] Website to aab
+- [X] App works without internet
+- [X] Javascript enabled
+- [X] Play Store ready app
+- [X] Custom keystore for aab signing
+- [X] External url opener
+- [X] Deep Linking
 
 ## Coming soon
 
-- Convert website into ipa/app/exe/appimage
-- Pull to refresh
-- Notifications
-- App update popup
+- [ ] macOS, iOS, Linux & Windows supoort
+- [ ] Admin App
+- [ ] Deep Linking 2
+- [ ] Pull to refresh
+- [ ] Notifications
+- [ ] App update popup
 
 ## Authors
 
