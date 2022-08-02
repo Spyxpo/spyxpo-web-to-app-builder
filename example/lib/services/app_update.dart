@@ -6,15 +6,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 import 'package:open_store/open_store.dart';
 
-final _checker = AppVersionChecker();
+final checker = AppVersionChecker();
 
 void checkAppUpdate(
     BuildContext context, String iosAppId, String androidAppId) async {
-  _checker.checkUpdate().then(
+  checker.checkUpdate().then(
     (value) {
       if (value.canUpdate) {
         updateNow(context, iosAppId, androidAppId);
-      } else {}
+      } else {
+        // ignore: avoid_print
+        print('No update available');
+      }
     },
   );
 }

@@ -39,20 +39,21 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
     if (Platform.isIOS) WebView.platform = CupertinoWebView();
+    checkAppUpdate(context, 'com.spyxpo.app', 'com.spyxpo.app');
   }
 
   @override
   Widget build(BuildContext context) {
-    WebViewController? _controller;
-    final Completer<WebViewController> _controllerCompleter =
+    WebViewController? controller;
+    final Completer<WebViewController> controllerCompleter =
         Completer<WebViewController>();
     willPopScope() async {
-      Future<bool>? goBack = _controller?.canGoBack();
+      Future<bool>? goBack = controller?.canGoBack();
       // ignore: unrelated_type_equality_checks
       if (goBack == true) {
         return true;
       } else {
-        _controller!.goBack();
+        controller!.goBack();
         return false;
       }
     }
@@ -62,39 +63,45 @@ class _MyHomePageState extends State<MyHomePage> {
       child: WillPopScope(
         onWillPop: () => willPopScope(),
         child: Scaffold(
-          body: Builder(
-            builder: (BuildContext context) {
-              return WebView(
-                initialUrl: url,
-                javascriptMode: JavascriptMode.unrestricted,
-                onWebResourceError: (WebResourceError error) {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ErrorPage()),
-                    (Route<dynamic> route) => false,
-                  );
-                },
-                onProgress: (int progress) {
-                  const Center(child: CircularProgressIndicator());
-                },
-                onWebViewCreated: (WebViewController webViewController) {
-                  _controllerCompleter.future
-                      .then((value) => _controller = value);
-                  _controllerCompleter.complete(webViewController);
-                },
-                navigationDelegate: (NavigationRequest request) {
-                  if (request.url.startsWith(url)) {
-                    return NavigationDecision.navigate;
-                  } else {
-                    launchURL(request.url);
-                    return NavigationDecision.prevent;
-                  }
-                },
-                zoomEnabled: false,
-                gestureNavigationEnabled: true,
-                geolocationEnabled: true,
-              );
-            },
+          body: DoubleBackToCloseApp(
+            snackBar: const SnackBar(
+              content: Text('Tap back again to leave'),
+            ),
+            child: Builder(
+              builder: (BuildContext context) {
+                return WebView(
+                  initialUrl: url,
+                  javascriptMode: JavascriptMode.unrestricted,
+                  onWebResourceError: (WebResourceError error) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ErrorPage()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  onProgress: (int progress) {
+                    const Center(child: CircularProgressIndicator());
+                  },
+                  onWebViewCreated: (WebViewController webViewController) {
+                    controllerCompleter.future
+                        .then((value) => controller = value);
+                    controllerCompleter.complete(webViewController);
+                  },
+                  navigationDelegate: (NavigationRequest request) {
+                    if (request.url.startsWith(url)) {
+                      return NavigationDecision.navigate;
+                    } else {
+                      launchURL(request.url);
+                      return NavigationDecision.prevent;
+                    }
+                  },
+                  zoomEnabled: false,
+                  gestureNavigationEnabled: true,
+                  geolocationEnabled: true,
+                );
+              },
+            ),
           ),
         ),
       ),
@@ -102,7 +109,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   launchURL(String url) async {
+    // ignore: deprecated_member_use
     if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
       await launch(url);
     } else {
       throw 'Could not launch $url';
