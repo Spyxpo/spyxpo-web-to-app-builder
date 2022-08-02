@@ -217,6 +217,13 @@ def saveData():
     with open(f'projects/{app_name_info}/lib/main.dart', "w") as new_main_file_android_package_name:
         new_main_file_android_package_name.write(android_package_name)
 
+    # add deep link in Android projects
+    with open(f'projects/{app_name_info}/android/app/src/main/AndroidManifest.xml')as deep_link_url_name:
+        deep_link_url = deep_link_url_name.read().replace("website.com", str(app_web_url), 1)
+
+    with open(f'projects/{app_name_info}/android/app/src/main/AndroidManifest.xml', "w") as new_deep_link_url_name:
+        new_deep_link_url_name.write(deep_link_url)
+
     # add app website url in main.dart
     with open(f'projects/{app_name_info}/lib/main.dart')as home_file:
         website_name = home_file.read().replace("WEBSITE", str(app_web_url), 1)
