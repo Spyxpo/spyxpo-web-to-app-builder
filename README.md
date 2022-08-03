@@ -122,6 +122,7 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - [ ] Admob support
 - [ ] Customise permissions
 - [ ] Loading Indicator
+- [ ] Local HTML website
 
 ## Authors
 
