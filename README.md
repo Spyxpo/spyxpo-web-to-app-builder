@@ -106,7 +106,7 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - [X] App works without internet
 - [X] Javascript enabled
 - [X] Play Store ready app
-- [X] Custom keystore for aab signing
+- [X] Your own keystore
 - [X] External url opener
 - [X] Deep Linking
 
@@ -118,6 +118,10 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 - [ ] Pull to refresh
 - [ ] Notifications
 - [ ] App update popup
+- [ ] Splash Screen
+- [ ] Admob support
+- [ ] Customise permissions
+- [ ] Loading Indicator
 
 ## Authors
 
